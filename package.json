@@ -1,0 +1,13 @@
+{
+  "name": "smoothie-shop",
+  "version": "1.0.0",
+  "description": "ร้านน้ำปั่นผลไม้สด (Smoothie Bar) พร้อมระบบสั่งซื้อและปรับแต่งแก้วโปรด",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": ["smoothie", "fruit", "shop", "cafe", "store"],
+  "author": "tmogvip-hub",
+  "license": "MIT"
+}

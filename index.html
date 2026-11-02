@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Smoothie Bar | ร้านน้ำปั่นผลไม้สดชื่น</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="brand">
+        <span class="brand-icon">🥤</span>
+        <div>
+          <h1 class="brand-title">Fresh Smoothie Bar</h1>
+          <p class="brand-subtitle">น้ำปั่นผลไม้สดแท้ 100% สดชื่นทุกแก้ว</p>
+        </div>
+      </div>
+      <button class="cart-btn" id="openCartBtn" aria-label="เปิดตะกร้าสินค้า">
+        <span class="cart-icon">🛒</span>
+        <span class="cart-text">ตะกร้าของคุณ</span>
+        <span class="cart-badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <span class="hero-tag">✨ คัดสรรผลไม้สดใหม่ทุกวัน</span>
+      <h2 class="hero-title">ดื่มด่ำความสดชื่น เติมวิตามินให้ร่างกาย</h2>
+      <p class="hero-desc">เลือกความหวานได้ตามใจ ชอบหวานธรรมชาติ 0% หรือหวานฉ่ำ พร้อมท็อปปิ้งเคี้ยวเพลิน</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container main-content">
+    <!-- Category Tabs -->
+    <div class="category-tabs" id="categoryTabs">
+      <button class="tab-btn active" data-category="all">🍹 ทั้งหมด</button>
+      <button class="tab-btn" data-category="fresh">🍉 ผลไม้สดแท้</button>
+      <button class="tab-btn" data-category="yogurt">🍓 โยเกิร์ตสมูทตี้</button>
+      <button class="tab-btn" data-category="special">🥑 เมนูซิกเนเจอร์</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="products-grid" id="productsGrid">
+      <!-- Cards rendered by JS -->
+    </div>
+  </main>
+
+  <!-- Customize Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div class="modal-header">
+        <div class="modal-thumb" id="modalThumb">🥤</div>
+        <div>
+          <h3 class="modal-title" id="modalTitle">ชื่อเมนู</h3>
+          <p class="modal-desc" id="modalDesc">คำอธิบายเมนู</p>
+          <div class="modal-price" id="modalBasePrice">฿0</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <!-- Sweetness -->
+        <div class="option-group">
+          <label class="option-label">ระดับความหวาน 🍯</label>
+          <div class="sweetness-selector" id="sweetnessOptions">
+            <!-- options from logic -->
+          </div>
+        </div>
+
+        <!-- Toppings -->
+        <div class="option-group">
+          <label class="option-label">เพิ่มท็อปปิ้ง (เลือกได้มากกว่า 1) 🧋</label>
+          <div class="toppings-list" id="toppingsList">
+            <!-- toppings from logic -->
+          </div>
+        </div>
+
+        <!-- Quantity & Subtotal -->
+        <div class="modal-footer-row">
+          <div class="qty-control">
+            <button class="qty-btn" id="qtyMinusBtn">-</button>
+            <span class="qty-val" id="qtyDisplay">1</span>
+            <button class="qty-btn" id="qtyPlusBtn">+</button>
+          </div>
+          <div class="item-summary-price">
+            <span class="sum-label">รวมแก้วนี้</span>
+            <span class="sum-amount" id="itemTotalAmount">฿0</span>
+          </div>
+        </div>
+
+        <button class="btn btn-primary add-to-cart-submit" id="addToCartConfirmBtn">
+          เพิ่มลงตะกร้า 🛒
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-backdrop" id="cartBackdrop">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <h3>รายการที่สั่งซื้อ 🥤</h3>
+        <button class="cart-close-btn" id="cartCloseBtn">&times;</button>
+      </div>
+
+      <div class="cart-items" id="cartItemsList">
+        <!-- Cart items rendered here -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-line">
+          <span>จำนวนแก้วทั้งหมด</span>
+          <span id="summaryTotalCups">0 แก้ว</span>
+        </div>
+        <div class="cart-summary-line grand-total">
+          <span>ยอดชำระสุทธิ</span>
+          <span class="grand-price" id="summaryGrandTotal">฿0</span>
+        </div>
+        <button class="btn btn-checkout" id="checkoutBtn">ยืนยันการสั่งซื้อ ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Receipt Modal -->
+  <div class="modal-backdrop" id="receiptBackdrop">
+    <div class="modal-card receipt-card">
+      <div class="receipt-icon">🎉</div>
+      <h3 class="receipt-title">สั่งซื้อสำเร็จแล้วค่ะ!</h3>
+      <p class="receipt-subtitle">บาริสต้ากำลังปั่นเมนูแสนอร่อยให้คุณอย่างตั้งใจ</p>
+      <div class="receipt-details" id="receiptDetails"></div>
+      <button class="btn btn-primary" id="receiptDoneBtn">สั่งเพิ่มอีกแก้ว 🍓</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Fresh Smoothie Bar. สดชื่น ปลอดภัย ดีต่อสุขภาพทุกวัน</p>
+    </div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
